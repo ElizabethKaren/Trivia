@@ -48,6 +48,7 @@ class App extends React.Component {
       <h2>Currect Trivia Score: {this.state.score} </h2>
       {this.state.num == 10 ? <button onClick={this.newGame}>Start New Game</button> : <button onClick={this.newQuestion}>Generate New Questions</button>}
       <AllAskedQuestions newQuestion={this.newQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>
+      <br></br>
     </div>
     )
   }

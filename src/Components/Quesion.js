@@ -20,6 +20,7 @@ class Question extends React.Component {
     render(){
        const possibleAnswers = [...this.props.incorrect, this.props.correct]
        possibleAnswers.sort()
+    if (this.state.answered) return  <div><h3>{this.props.question}</h3>{possibleAnswers.map((answer, index) => <div><button name={answer} key={index}>{answer}</button><br></br></div> )}</div>
     return (
         <div>
             <h3>{this.props.question}</h3>
