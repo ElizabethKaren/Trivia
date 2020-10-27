@@ -30,15 +30,10 @@ class App extends React.Component {
   }
 
 
-  addToScore = e => {
-    e.preventDefault()
-    this.setState({ score: parseInt(this.state.score) + 5 })
-  }
+  addToScore = e => this.setState({ score: parseInt(this.state.score) + 5 })
 
-  newQuestion = e => {
-    e.preventDefault()
-    this.setState({ num: this.state.num + 1 })
-  }
+  newQuestion = e => this.setState({ num: this.state.num + 1 })
+
 
  render (){
   const arrayQ = this.state.questions.slice(this.state.startingNum, this.state.num)
@@ -46,8 +41,8 @@ class App extends React.Component {
     <div className='App'>
       <br></br>
       <h2>Currect Trivia Score: {this.state.score} </h2>
-      {this.state.num == 10 ? <button onClick={this.newGame}>Start New Game</button> : <button onClick={this.newQuestion}>Generate New Questions</button>}
-      <AllAskedQuestions newQuestion={this.newQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>
+      {this.state.num == 10 ? <button onClick={this.newGame}>New Game</button> : <button onClick={this.newQuestion}>New Questions</button>}
+      <AllAskedQuestions addToScore={this.addToScore} arrayQ={arrayQ}/>
       <br></br>
     </div>
     )
