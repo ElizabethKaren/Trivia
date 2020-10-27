@@ -5,7 +5,7 @@ const Question = props => {
     const correctAnswer = e => {
         e.preventDefault()
         if (e.target.name == props.correct){
-            e.target.style.backgroundColor = 'Green' 
+            e.target.style.backgroundColor = 'Green'
             props.addToScore(e)
         } else {
             e.target.style.backgroundColor = 'Red'
