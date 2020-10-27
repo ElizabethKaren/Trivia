@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import questions from './Data/Apprentice_TandemFor400_Data'
+import Question from './Components/Question'
 
-function App() {
+class App extends React.Component {
+  state = {
+    questions: [questions]
+  }
+  render (){
+    console.log(this.state.questions)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1><Question /></h1>
     </div>
-  );
+    )
+  }
 }
 
-export default App;
+export default App 
