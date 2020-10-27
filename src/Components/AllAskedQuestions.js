@@ -3,7 +3,7 @@ import Question from './Quesion'
 
 const AllAskedQuestions = props => {
     return (
-        <div>
+        <div className='contianer'>
             {props.arrayQ.map((question, index) => <Question className='question' addToScore={props.addToScore} key={index} {...question} />)} 
         </div>
     )
