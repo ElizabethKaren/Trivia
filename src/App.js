@@ -1,16 +1,30 @@
 import React from 'react';
-import questions from './Data/Apprentice_TandemFor400_Data'
-import Question from './Components/Question'
+import Questions from './Data/Apprentice_TandemFor400_Data'
+import Question from './Components/Quesion';
 
 class App extends React.Component {
   state = {
-    questions: [questions]
+    questions: {}
   }
-  render (){
-    console.log(this.state.questions)
+ 
+  componentDidMount(){
+    this.setState({questions: Questions})
+  }
+
+  generateQuestion = obj => {
+    return (
+      <div>
+      <Question question={obj} />
+      </div>
+    )
+  }
+
+ render (){
+    const newQ = this.state.questions[Math.floor(Math.random() * this.state.questions.length)]
+    console.log(newQ)
   return (
     <div>
-      <h1><Question /></h1>
+      <button onClick={(newQ) => this.generateQuestion(newQ)}>Ask Me a Quesion</button>
     </div>
     )
   }
