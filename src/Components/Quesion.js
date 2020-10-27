@@ -3,10 +3,10 @@ import React from 'react'
 const Question = props => {
 
     const correctAnswer = e => {
-        console.log(e.target.name)
+        e.preventDefault()
         if (e.target.name == props.correct){
             e.target.style.backgroundColor = 'Green' 
-            props.addToScore()
+            props.addToScore(e)
         } else {
             e.target.style.backgroundColor = 'Red'
         }
@@ -26,7 +26,7 @@ const Question = props => {
     return (
         <div>
             <h3>{props.question}</h3>
-            {possibleAnswers.map((answer, index) => <div><button onClick={correctAnswer} name={answer} key={answer}>{answer}</button><br></br></div> )}
+            {possibleAnswers.map((answer, index) => <div><button onClick={correctAnswer} name={answer} key={index}>{answer}</button><br></br></div> )}
         </div>
     )
 }
