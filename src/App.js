@@ -11,7 +11,7 @@ class App extends React.Component {
     score: 0
   }
 
-  newGame = () => this.setState({ startingNum: parseInt(this.state.startingNum) + 10, num: 0 })
+  newGame = () => this.setState({ score: 0, startingNum: parseInt(this.state.startingNum) + 10, num: 0 })
 
 
   shuffleArray = array => {
