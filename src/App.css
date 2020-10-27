@@ -6,4 +6,5 @@ button{
 .App{
     align-items: center;
     margin-left: 10vw;
+    size: small
 }

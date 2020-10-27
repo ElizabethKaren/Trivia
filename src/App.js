@@ -7,8 +7,11 @@ class App extends React.Component {
   state = {
     questions: [],
     num: 0,
+    startingNum: 0,
     score: 0
   }
+
+  newGame = () => this.setState({ startingNum: parseInt(this.state.startingNum) + 10, num: 0 })
 
 
   shuffleArray = array => {
@@ -34,16 +37,16 @@ class App extends React.Component {
 
   newQuestion = e => {
     e.preventDefault()
-    this.setState({ num: this.state.num + 10 })
+    this.setState({ num: this.state.num + 1 })
   }
 
  render (){
-  const arrayQ = this.state.questions.slice(0, this.state.num).reverse()
+  const arrayQ = this.state.questions.slice(this.state.startingNum, this.state.num)
   return (
     <div className='App'>
       <br></br>
       <h2>Currect Trivia Score: {this.state.score} </h2>
-      <button onClick={this.newQuestion}>Ten New Questions</button>
+      {this.state.num == 10 ? <button onClick={this.newGame}>Start New Game</button> : <button onClick={this.newQuestion}>Generate New Questions</button>}
       <AllAskedQuestions newQuestion={this.newQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>
     </div>
     )
