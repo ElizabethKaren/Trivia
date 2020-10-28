@@ -4,7 +4,7 @@ import Question from './Quesion'
 const AllAskedQuestions = props => {
     return (
         <div className='contianer'>
-            {props.arrayQ.map((question, index) => <Question className='question' index={index} removeQuestion={props.removeQuestion} addToScore={props.addToScore} key={index} {...question} />)} 
+            {props.arrayQ.map((question, index) => <Question className='question' answer={props.answer} index={index} removeQuestion={props.removeQuestion} addToScore={props.addToScore} key={index} {...question} />)} 
         </div>
     )
 }

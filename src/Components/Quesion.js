@@ -1,37 +1,38 @@
 import React from 'react'
 
-class Question extends React.Component {
+const Question = props => {
 
-    state = {
-        answered: false 
-    }
-
-     correctAnswer = e => {
-        e.preventDefault()
-        if (e.target.name == this.props.correct){
+    const correctAnswer = e => {
+        if (e.target.name == props.correct){
             e.target.style.backgroundColor = 'Lime'
-            this.props.addToScore(e)
+            props.addToScore(e)
         } else {
             e.target.style.backgroundColor = 'Red'
         }
-        this.setState({ answered: true })
+        props.answer(e.target.name, props,index)
     }
 
-    alreadyAnswered = () => alert('QUESTION ALREADY ANSWERED')
+    const alreadyAnswered = () => alert('QUESTION ALREADY ANSWERED')
     
-    render(){
-        if (!this.props.incorrect) return <div>Loading...</div>
-       const possibleAnswers = [...this.props.incorrect, this.props.correct]
+    if (!props.incorrect) return <div>Loading...</div>
+       const possibleAnswers = [...props.incorrect, props.correct]
        possibleAnswers.sort()
-    if (this.state.answered) return <div><p id='back' onClick={()=>this.props.removeQuestion(this.props.index)}>x</p><p id='question'>{this.props.question}</p>{possibleAnswers.map((answer, index) => <div><button onClick={this.alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}</div>
-    return (
+    if (props.answered) return (
         <div>
-            <p id='back' onClick={()=>this.props.removeQuestion(this.props.index)}>x</p>
-            <p id='question'>{this.props.question}</p>
-            {possibleAnswers.map((answer, index) => <div><button onClick={this.correctAnswer} name={answer} key={index}>{answer}</button><br></br></div> )}
+            <p id='back' onClick={()=>this.props.removeQuestion(props.index)}>→</p>
+            <p id='question'>{props.question}</p>
+            {possibleAnswers.map((answer, index) => <div><button onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}
         </div>
     )
-  }
+
+    return (
+        <div>
+            <p id='back' onClick={()=>props.removeQuestion(props.index)}>X</p>
+            <p id='question'>{props.question}</p>
+            {possibleAnswers.map((answer, index) => <div><button onClick={correctAnswer} name={answer} key={index}>{answer}</button><br></br></div> )}
+        </div>
+    )
+
 }
 
 export default Question

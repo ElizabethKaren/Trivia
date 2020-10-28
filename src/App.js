@@ -24,8 +24,18 @@ class App extends React.Component {
         array[i] = array[j];
         array[j] = temp;
     }
+    for (let i = 0; i > array.length-1; i++){
+      let temp = {...array[i], answered: false, answerGiven: ''}
+      array[i] = temp 
+    }
     return array
 }
+
+ answer = (words, index) => {
+  const answeredQuestion = this.state.arrayQ[index]
+  answeredQuestion.answered = true 
+  answeredQuestion.answerGiven = words
+ }
  
   componentDidMount(){
     const questions = this.shuffleArray(Questions)
@@ -68,7 +78,7 @@ class App extends React.Component {
       <h2>Currect Trivia Score: {this.state.score} </h2>
       {this.state.num == 10 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Questions</button>}
       <br></br>
-      {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
+      {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions answer={this.answer} removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
       <br></br>
     </div>
     )
