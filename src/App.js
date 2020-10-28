@@ -31,13 +31,14 @@ class App extends React.Component {
     return array
 }
 
- answer = (words, index) => {
+ answer = (words) => {
    ///replace with new varibles for answer boolean and answer given string 
   const replacementQArray = this.state.arrayQ.slice()
-  const answeredQuestion = replacementQArray[index]
+  const answeredQuestion = replacementQArray.find(quest => quest.incorrect.includes(words) || quest.correct === words )
+  const index = replacementQArray.indexOf(answeredQuestion)
   const replacementQuestionArray = this.state.questions
-  const theQuestion = replacementQuestionArray.find(each => each.question === answeredQuestion.question)
-  let indexQuestionArray = replacementQArray.indexOf(theQuestion)
+  const theQuestion = replacementQuestionArray.find(each => each.question == answeredQuestion.question)
+  let indexQuestionArray = replacementQuestionArray.indexOf(theQuestion)
   answeredQuestion.answered = true 
   answeredQuestion.answerGiven = words
   theQuestion.answered = true 
