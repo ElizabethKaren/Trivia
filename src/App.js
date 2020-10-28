@@ -32,9 +32,13 @@ class App extends React.Component {
 }
 
  answer = (words, index) => {
+   ///replace with new varibles for answer boolean and answer given string 
   const answeredQuestion = this.state.arrayQ[index]
+  const questinArray = this.state.questions.find(each => each.question === answeredQuestion.question)
   answeredQuestion.answered = true 
   answeredQuestion.answerGiven = words
+  questinArray.answered = true 
+  questinArray.answerGiven = words 
  }
  
   componentDidMount(){
