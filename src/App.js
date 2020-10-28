@@ -33,12 +33,18 @@ class App extends React.Component {
 
  answer = (words, index) => {
    ///replace with new varibles for answer boolean and answer given string 
-  const answeredQuestion = this.state.arrayQ[index]
-  const questinArray = this.state.questions.find(each => each.question === answeredQuestion.question)
+  const replacementQArray = this.state.arrayQ.slice()
+  const answeredQuestion = replacementQArray[index]
+  const replacementQuestionArray = this.state.questions
+  const theQuestion = replacementQuestionArray.find(each => each.question === answeredQuestion.question)
+  let indexQuestionArray = replacementQArray.indexOf(theQuestion)
   answeredQuestion.answered = true 
   answeredQuestion.answerGiven = words
-  questinArray.answered = true 
-  questinArray.answerGiven = words 
+  theQuestion.answered = true 
+  theQuestion.answerGiven = words 
+  replacementQArray[index] = answeredQuestion
+  replacementQuestionArray[indexQuestionArray] = theQuestion
+  this.setState({ questions: replacementQuestionArray, arrayQ: replacementQArray})
  }
  
   componentDidMount(){
