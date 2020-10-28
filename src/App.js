@@ -10,7 +10,8 @@ class App extends React.Component {
     num: 0,
     startingNum: 0,
     score: 0,
-    showScore: false 
+    showScore: false,
+    arrayQ: []
   }
 
   newGame = () => this.setState({ score: 0, startingNum: parseInt(this.state.startingNum) + 10, num: 0 })
@@ -28,13 +29,14 @@ class App extends React.Component {
  
   componentDidMount(){
     const questions = this.shuffleArray(Questions)
-    this.setState({questions: questions})
+    const arrayQ = questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num))
+    this.setState({questions: questions, arrayQ: arrayQ})
   }
 
 
   addToScore = () => this.setState({ score: parseInt(this.state.score) + 5 })
 
-  newQuestion = () => this.setState({ num: this.state.num + 1 })
+  newQuestion = () => this.setState({ num: this.state.num + 1, arrayQ: this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num)+1) })
 
   gameOver = (num) => {
     if (num == 50){
@@ -48,10 +50,13 @@ class App extends React.Component {
 
   showScore = () => this.setState({ showScore: true })
 
-  removeQuestion = () => this.setState({ questions: this.state.questions.push(parseInt(this.state.num)), num: parseInt(this.state.num) -1 })
+  removeQuestion = (index) => {
+    const questionToRemove = this.state.arrayQ[index]
+    this.setState({ arrayQ: this.state.arrayQ.filter(question => question !== questionToRemove), num: parseInt(this.state.num)-1 })
+  }
 
  render (){
-  const arrayQ = this.state.questions.slice(this.state.startingNum, this.state.num).reverse()
+  const arrayQ = this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num))
   if (this.state.showScore) return (
     <div className='winner'>
       {this.gameOver(this.state.score)}
@@ -63,7 +68,7 @@ class App extends React.Component {
       <h2>Currect Trivia Score: {this.state.score} </h2>
       {this.state.num == 10 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Questions</button>}
       <br></br>
-      {arrayQ.length === 0 ? null : <AllAskedQuestions removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
+      {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
       <br></br>
     </div>
     )
