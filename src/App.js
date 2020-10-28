@@ -30,9 +30,9 @@ class App extends React.Component {
   }
 
 
-  addToScore = e => this.setState({ score: parseInt(this.state.score) + 5 })
+  addToScore = () => this.setState({ score: parseInt(this.state.score) + 5 })
 
-  newQuestion = e => this.setState({ num: this.state.num + 1 })
+  newQuestion = () => this.setState({ num: this.state.num + 1 })
 
 
  render (){

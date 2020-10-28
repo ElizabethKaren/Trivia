@@ -9,7 +9,7 @@ class Question extends React.Component {
      correctAnswer = e => {
         e.preventDefault()
         if (e.target.name == this.props.correct){
-            e.target.style.backgroundColor = 'Green'
+            e.target.style.backgroundColor = 'Lime'
             this.props.addToScore(e)
         } else {
             e.target.style.backgroundColor = 'Red'
@@ -22,7 +22,7 @@ class Question extends React.Component {
     render(){
        const possibleAnswers = [...this.props.incorrect, this.props.correct]
        possibleAnswers.sort()
-    if (this.state.answered) return  <div><p id='question'>{this.props.question}</p>{possibleAnswers.map((answer, index) => <div><button onClick={this.alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}</div>
+    if (this.state.answered) return <div><p id='question'>{this.props.question}</p>{possibleAnswers.map((answer, index) => <div><button onClick={this.alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}</div>
     return (
         <div>
             <p id='question'>{this.props.question}</p>
