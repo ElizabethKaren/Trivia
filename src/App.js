@@ -48,6 +48,8 @@ class App extends React.Component {
 
   showScore = () => this.setState({ showScore: true })
 
+  removeQuestion = () => this.setState({ questions: this.state.questions.push(parseInt(this.state.num)), num: parseInt(this.state.num) -1 })
+
  render (){
   const arrayQ = this.state.questions.slice(this.state.startingNum, this.state.num).reverse()
   if (this.state.showScore) return (
@@ -61,7 +63,7 @@ class App extends React.Component {
       <h2>Currect Trivia Score: {this.state.score} </h2>
       {this.state.num == 10 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Questions</button>}
       <br></br>
-      {arrayQ.length === 0 ? null : <AllAskedQuestions addToScore={this.addToScore} arrayQ={arrayQ}/>}
+      {arrayQ.length === 0 ? null : <AllAskedQuestions removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
       <br></br>
     </div>
     )
