@@ -5,6 +5,13 @@ button{
     width: 200px;
     font-weight: bold;
 }
+#back{
+    background-color: floralwhite;
+    border: 3px solid black;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+}
 .blue{
     background-color: dodgerblue;
     height: 100vh;

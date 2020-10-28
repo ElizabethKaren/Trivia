@@ -52,7 +52,7 @@ class App extends React.Component {
 
   removeQuestion = (index) => {
     const questionToRemove = this.state.arrayQ[index]
-    this.setState({ arrayQ: this.state.arrayQ.filter(question => question !== questionToRemove), num: parseInt(this.state.num)-1 })
+    this.setState({ questions: this.state.questions.filter(question => question !== questionToRemove), arrayQ: this.state.arrayQ.filter(question => question !== questionToRemove), num: parseInt(this.state.num)-1 })
   }
 
  render (){
