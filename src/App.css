@@ -5,15 +5,18 @@ button{
     width: 200px;
     font-weight: bold;
 }
+.blue{
+    background-color: dodgerblue;
+    height: 100vh;
+    width: 100vw;
+}
 .App{
     background-color: dodgerblue;
     align-content: center;
     padding-left: 35vw;
     padding-right: 35vw;
-    padding-top: 50wh;
+    padding-top: 80wh;
     size: small;
-    height: 100vh;
-    width: 100vw;
     font-family: Arial, Helvetica, sans-serif;
 }
 #question{
@@ -22,11 +25,9 @@ button{
 }
 .question{
     background-color: #f1f1f1;
-    /* margin: 10px;
-    padding: 20px; */
     font-size: 30px;
 }
 .contianer{
     align-content: center;
-    background-color: #dodgerblue;
+    background-color: dodgerblue;
 }

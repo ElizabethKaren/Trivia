@@ -1,6 +1,7 @@
 import React from 'react';
 import Questions from './Data/Apprentice_TandemFor400_Data'
 import AllAskedQuestions from './Components/AllAskedQuestions'
+import Question from './Components/Quesion'
 import './App.css'
 
 class App extends React.Component {
@@ -8,7 +9,8 @@ class App extends React.Component {
     questions: [],
     num: 0,
     startingNum: 0,
-    score: 0
+    score: 0,
+    showScore: false 
   }
 
   newGame = () => this.setState({ score: 0, startingNum: parseInt(this.state.startingNum) + 10, num: 0 })
@@ -34,14 +36,30 @@ class App extends React.Component {
 
   newQuestion = () => this.setState({ num: this.state.num + 1 })
 
+  gameOver = (num) => {
+    if (num == 50){
+      return <div><h2>GREAT JOB! YOU GOT EVERY QUESTION CORRECT!</h2></div>
+    } else if (num > 20){
+      return <div><h2>GREAT JOB! YOU WON {num} POINTS THIS GAME</h2></div>
+    } else {
+      return <div><h2>YOUR SCORE IS {num}! YOULL GET THEM NEXT TIME!</h2></div>
+    }
+  }
+
+  showScore = () => this.setState({ showScore: true })
 
  render (){
-  const arrayQ = this.state.questions.slice(this.state.startingNum, this.state.num)
+  const arrayQ = this.state.questions.slice(this.state.startingNum, this.state.num).reverse()
+  if (this.state.showScore) return (
+    <div className='winner'>
+      {this.gameOver(this.state.score)}
+    </div>
+  )
   return (
     <div className='App'>
       <br></br>
       <h2>Currect Trivia Score: {this.state.score} </h2>
-      {this.state.num == 10 ? <button onClick={this.newGame}>New Game</button> : <button onClick={this.newQuestion}>New Questions</button>}
+      {this.state.num == 10 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Questions</button>}
       <br></br>
       {arrayQ.length === 0 ? null : <AllAskedQuestions addToScore={this.addToScore} arrayQ={arrayQ}/>}
       <br></br>

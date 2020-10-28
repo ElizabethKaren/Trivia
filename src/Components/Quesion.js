@@ -20,6 +20,7 @@ class Question extends React.Component {
     alreadyAnswered = () => alert('QUESTION ALREADY ANSWERED')
     
     render(){
+        if (!this.props.incorrect) return <div>Loading...</div>
        const possibleAnswers = [...this.props.incorrect, this.props.correct]
        possibleAnswers.sort()
     if (this.state.answered) return <div><p id='question'>{this.props.question}</p>{possibleAnswers.map((answer, index) => <div><button onClick={this.alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}</div>
