@@ -77,7 +77,7 @@ class App extends React.Component {
   }
 
  render (){
-  const arrayQ = this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num))
+  const arrayQ = this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num)).reverse()
   if (this.state.showScore) return (
     <div className='winner'>
       {this.gameOver(this.state.score)}
