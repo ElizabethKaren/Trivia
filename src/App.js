@@ -1,7 +1,7 @@
 import React from 'react';
 import Questions from './Data/Apprentice_TandemFor400_Data'
 import AllAskedQuestions from './Components/AllAskedQuestions'
-import Question from './Components/Quesion'
+import UserName from './Components/UserName'
 import './App.css'
 
 class App extends React.Component {
@@ -11,7 +11,9 @@ class App extends React.Component {
     startingNum: 0,
     score: 0,
     showScore: false,
-    arrayQ: []
+    arrayQ: [],
+    userName: '',
+    input: ''
   }
 
   newGame = () => this.setState({ score: 0, startingNum: parseInt(this.state.startingNum) + 10, num: 0 })
@@ -68,24 +70,32 @@ class App extends React.Component {
     }
   }
 
+  handleOnChange = e => this.setState({ input: e.target.value })
+
+  updateUser = () => this.setState({ userName: this.state.input, input: ''})
+
   showScore = () => this.setState({ showScore: true })
 
-  removeQuestion = (question) => {
-    this.setState({ questions: this.state.questions.filter(quest => quest.question != question), arrayQ: this.state.arrayQ.filter(quest => quest.question != question), num: parseInt(this.state.num)-1 })
-    // const questionToRemove = this.state.arrayQ[index]
-    // this.setState({ questions: this.state.questions.filter(question => question !== questionToRemove), arrayQ: this.state.arrayQ.filter(question => question !== questionToRemove), num: parseInt(this.state.num)-1 })
-  }
+  removeQuestion = (question) => this.setState({ questions: this.state.questions.filter(quest => quest.question != question), arrayQ: this.state.arrayQ.filter(quest => quest.question != question), num: parseInt(this.state.num)-1 })
 
  render (){
   const arrayQ = this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num)).reverse()
+  if (this.state.userName === '')return (
+    <div>
+      <UserName updateUser={this.updateUser} handleOnChange={this.handleOnChange}/> 
+    </div>
+  )
+  
   if (this.state.showScore) return (
     <div className='winner'>
+      <h2>{this.state.userName}</h2>
       {this.gameOver(this.state.score)}
     </div>
   )
   return (
     <div className='App'>
       <br></br>
+      <h2>{this.state.userName}</h2>
       <h2>Currect Trivia Score: {this.state.score} </h2>
       {this.state.num == 10 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Questions</button>}
       <br></br>
