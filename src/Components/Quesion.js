@@ -3,7 +3,7 @@ import React from 'react'
 const Question = props => {
 
     const correctAnswer = e => {
-        if (e.target.name == props.correct){
+        if (e.target.name === props.correct){
             props.addToScore(e)
         } 
         props.answer(e.target.name)
@@ -22,7 +22,7 @@ const Question = props => {
             {possibleAnswers.map((answer, index) => answer === props.correct ? <div><button id='green' onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> : <div><button onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}
         </div>
     )
-    if (props.answered && props.answerGiven != props.correct) return (
+    if (props.answered && props.answerGiven !== props.correct) return (
         <div>
             {/* <p id='back' onClick={()=>props.removeQuestion(props.question)}>X</p> */}
             <p><strong>Question {props.size - props.index}</strong></p>

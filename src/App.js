@@ -38,7 +38,7 @@ class App extends React.Component {
   const answeredQuestion = replacementQArray.find(quest => quest.incorrect.includes(words) || quest.correct === words )
   const index = replacementQArray.indexOf(answeredQuestion)
   const replacementQuestionArray = this.state.questions
-  const theQuestion = replacementQuestionArray.find(each => each.question == answeredQuestion.question)
+  const theQuestion = replacementQuestionArray.find(each => each.question === answeredQuestion.question)
   let indexQuestionArray = replacementQuestionArray.indexOf(theQuestion)
   answeredQuestion.answered = true 
   answeredQuestion.answerGiven = words
@@ -61,7 +61,7 @@ class App extends React.Component {
   newQuestion = () => this.setState({ num: this.state.num + 1, arrayQ: this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num)+1) })
 
   gameOver = (num) => {
-    if (num == 50){
+    if (num === 50){
       return <div><h2>BOOM! YOU GOT EVERY QUESTION CORRECT!</h2></div>
     } else if (num > 20){
       return <div><h2>AWESOME! YOU WON {num} POINTS THIS GAME</h2></div>
@@ -76,7 +76,7 @@ class App extends React.Component {
 
   showScore = () => this.setState({ showScore: true })
 
-  removeQuestion = (question) => this.setState({ questions: this.state.questions.filter(quest => quest.question != question), arrayQ: this.state.arrayQ.filter(quest => quest.question != question), num: parseInt(this.state.num)-1 })
+  removeQuestion = (question) => this.setState({ questions: this.state.questions.filter(quest => quest.question !== question), arrayQ: this.state.arrayQ.filter(quest => quest.question !== question), num: parseInt(this.state.num)-1 })
 
  render (){
   const arrayQ = this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num)).reverse()
@@ -97,7 +97,7 @@ class App extends React.Component {
       <br></br>
       <h2>Good Luck {this.state.userName}!</h2>
       <h2>Currect Trivia Score: {this.state.score} </h2>
-      {this.state.num == 10 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Questions</button>}
+      {this.state.num === 10 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Questions</button>}
       <br></br>
       {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions answer={this.answer} removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
       <br></br>
