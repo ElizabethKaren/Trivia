@@ -33,13 +33,13 @@ class App extends React.Component {
     return array
 }
 
- playAgain = () => this.setState({ showScore: false, score: 0, startingNum: 0, num: 0, arrayQ: [], questions: this.shuffleArray(Questions) })
+ playAgain = () => this.setState({ showScore: false, score: 0, startingNum: parseInt(this.state.num), num: 11 })
 
  answer = (words) => {
   const replacementQArray = this.state.arrayQ.slice()
   const answeredQuestion = replacementQArray.find(quest => quest.incorrect.includes(words) || quest.correct === words )
   const index = replacementQArray.indexOf(answeredQuestion)
-  const replacementQuestionArray = this.state.questions
+  const replacementQuestionArray = this.state.questions.slice()
   const theQuestion = replacementQuestionArray.find(each => each.question === answeredQuestion.question)
   let indexQuestionArray = replacementQuestionArray.indexOf(theQuestion)
   answeredQuestion.answered = true 
@@ -92,7 +92,7 @@ class App extends React.Component {
     <div className='App'>
       <h2>Great Job {this.state.userName}!</h2>
       {this.gameOver(this.state.score)}
-      <button onClick={this.playAgain}>Play Again</button>
+      {/* {this.state.num === 20 ? null : <button onClick={this.playAgain}>Play Again</button>} */}
     </div>
   )
   return (
@@ -100,7 +100,7 @@ class App extends React.Component {
       <br></br>
       <h2>Good Luck {this.state.userName}!</h2>
       <h2>Currect Trivia Score: {this.state.score} </h2>
-      {this.state.num === 10 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Questions</button>}
+      {this.state.num === 10 || this.state.num === 21 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Question</button>}
       <br></br>
       {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions answer={this.answer} removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
       <br></br>
