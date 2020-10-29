@@ -34,7 +34,7 @@ class App extends React.Component {
     return array
 }
 
- playAgain = () => this.setState({ showScore: false, score: 0, startingNum: parseInt(this.state.num), num: 11 })
+ playAgain = () => this.setState({ showScore: false, score: 0, startingNum: 11, num: 11 })
 
  answer = (words) => {
   const replacementQArray = this.state.arrayQ.slice()
@@ -97,7 +97,7 @@ class App extends React.Component {
       <img src={Nerd} alt='nerd' width="150" height="150"/>
       <h3>Great Job {this.state.userName}!</h3>
       {this.gameOver(this.state.score)}
-      {/* {this.state.num === 20 ? null : <button onClick={this.playAgain}>Play Again</button>} */}
+      {this.state.num === 21 ? null : <button onClick={this.playAgain}>Play Again</button>}
     </div>
   )
   return (
