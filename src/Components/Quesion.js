@@ -16,7 +16,6 @@ const Question = props => {
        possibleAnswers.sort()
     if (props.answered && props.answerGiven === props.correct) return (
         <div>
-            {/* <p id='back' onClick={()=>props.removeQuestion(props.question)}>X</p> */}
             <p><strong>Question {props.size - props.index}</strong></p>
             <p id='question'>{props.question}</p>
             {possibleAnswers.map((answer, index) => answer === props.correct ? <div><button id='green' onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> : <div><button onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}
@@ -24,16 +23,14 @@ const Question = props => {
     )
     if (props.answered && props.answerGiven !== props.correct) return (
         <div>
-            {/* <p id='back' onClick={()=>props.removeQuestion(props.question)}>X</p> */}
             <p><strong>Question {props.size - props.index}</strong></p>
             <p id='question'>{props.question}</p>
-            {possibleAnswers.map((answer, index) => answer === props.answerGiven ? <div><button id='red' onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> : <div><button onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}
+            {possibleAnswers.map((answer, index) => answer === props.correct ? <div><button id='yellow' onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> : <div><button onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}
         </div>
     )
 
     return (
         <div>
-            {/* <p id='back' onClick={()=>props.removeQuestion(props.question)}>X</p> */}
             <p><strong>Question {props.size - props.index}</strong></p>
             <p id='question'>{props.question}</p>
             {possibleAnswers.map((answer, index) => <div><button onClick={correctAnswer} name={answer} key={index}>{answer}</button><br></br></div> )}

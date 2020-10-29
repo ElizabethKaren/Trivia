@@ -8,6 +8,9 @@ button{
 :root{
     background-color: dodgerblue;
 }
+#yellow{
+    background-color: yellow;
+}
 input{
     border: 3px solid black;
     border-radius: 30px;
