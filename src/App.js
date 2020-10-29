@@ -62,11 +62,11 @@ class App extends React.Component {
 
   gameOver = (num) => {
     if (num == 50){
-      return <div><h2>GREAT JOB! YOU GOT EVERY QUESTION CORRECT!</h2></div>
+      return <div><h2>BOOM! YOU GOT EVERY QUESTION CORRECT!</h2></div>
     } else if (num > 20){
-      return <div><h2>GREAT JOB! YOU WON {num} POINTS THIS GAME</h2></div>
+      return <div><h2>AWESOME! YOU WON {num} POINTS THIS GAME</h2></div>
     } else {
-      return <div><h2>YOUR SCORE IS {num}! YOULL GET THEM NEXT TIME!</h2></div>
+      return <div><h2>YOUR SCORE IS {num}!</h2></div>
     }
   }
 
@@ -87,8 +87,8 @@ class App extends React.Component {
   )
   
   if (this.state.showScore) return (
-    <div className='winner'>
-      <h2>{this.state.userName}</h2>
+    <div className='App'>
+      <h2>Great Job {this.state.userName}!</h2>
       {this.gameOver(this.state.score)}
     </div>
   )
