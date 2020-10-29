@@ -5,6 +5,9 @@ button{
     width: 200px;
     font-weight: bold;
 }
+:root{
+    background-color: dodgerblue;
+}
 input{
     border: 3px solid black;
     border-radius: 30px;
@@ -24,11 +27,6 @@ background-color: red;
 }
 #green{
 background-color: lime;
-}
-.blue{
-    background-color: dodgerblue;
-    height: 100vh;
-    width: 100vw;
 }
 .App{
     background-color: dodgerblue;
