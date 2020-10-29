@@ -2,6 +2,7 @@ import React from 'react';
 import Questions from './Data/Apprentice_TandemFor400_Data'
 import AllAskedQuestions from './Components/AllAskedQuestions'
 import UserName from './Components/UserName'
+import Nerd from './Images/nerd.png'
 import './App.css'
 
 class App extends React.Component {
@@ -84,13 +85,17 @@ class App extends React.Component {
   const arrayQ = this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num)).reverse()
   if (this.state.userName === '')return (
     <div className='App'>
+      <br></br>
+      <img src={Nerd} alt='nerd' width="150" height="150"/>
       <UserName updateUser={this.updateUser} handleOnChange={this.handleOnChange}/> 
     </div>
   )
   
   if (this.state.showScore) return (
     <div className='App'>
-      <h2>Great Job {this.state.userName}!</h2>
+      <br></br>
+      <img src={Nerd} alt='nerd' width="150" height="150"/>
+      <h3>Great Job {this.state.userName}!</h3>
       {this.gameOver(this.state.score)}
       {/* {this.state.num === 20 ? null : <button onClick={this.playAgain}>Play Again</button>} */}
     </div>
@@ -98,8 +103,9 @@ class App extends React.Component {
   return (
     <div className='App'>
       <br></br>
-      <h2>Good Luck {this.state.userName}!</h2>
-      <h2>Currect Trivia Score: {this.state.score} </h2>
+      <img src={Nerd} alt='nerd' width="150" height="150"/>
+      <h3>Good Luck {this.state.userName}!</h3>
+      <h3>Currect Trivia Score: {this.state.score} </h3>
       {this.state.num === 10 || this.state.num === 21 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Question</button>}
       <br></br>
       {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions answer={this.answer} removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
