@@ -5,7 +5,7 @@ const UserName = props => {
         <div className='form'>
             <br></br>
             <br></br>
-            <h1>Enter Username</h1>
+            <h2>Enter Username</h2>
             <input onChange={props.handleOnChange} placeholder='  Trivia Player...'></input>
             <br></br><br></br>
             <button onClick={props.updateUser}>Play Triva</button>

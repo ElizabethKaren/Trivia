@@ -95,7 +95,7 @@ class App extends React.Component {
   return (
     <div className='App'>
       <br></br>
-      <h2>{this.state.userName}</h2>
+      <h2>Good Luck {this.state.userName}!</h2>
       <h2>Currect Trivia Score: {this.state.score} </h2>
       {this.state.num == 10 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Questions</button>}
       <br></br>
