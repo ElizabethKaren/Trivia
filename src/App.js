@@ -81,7 +81,7 @@ class App extends React.Component {
  render (){
   const arrayQ = this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num)).reverse()
   if (this.state.userName === '')return (
-    <div>
+    <div className='App'>
       <UserName updateUser={this.updateUser} handleOnChange={this.handleOnChange}/> 
     </div>
   )
