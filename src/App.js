@@ -75,7 +75,13 @@ class App extends React.Component {
 
   handleOnChange = e => this.setState({ input: e.target.value })
 
-  updateUser = () => this.setState({ userName: this.state.input, input: ''})
+  updateUser = () => {
+    if (this.state.input === ''){
+       alert("Please Enter Your Name")
+    } else {
+      this.setState({ userName: this.state.input, input: ''})
+    }
+  }
 
   showScore = () => this.setState({ showScore: true })
 
