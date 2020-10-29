@@ -32,7 +32,6 @@ class App extends React.Component {
 }
 
  answer = (words) => {
-   ///replace with new varibles for answer boolean and answer given string 
   const replacementQArray = this.state.arrayQ.slice()
   const answeredQuestion = replacementQArray.find(quest => quest.incorrect.includes(words) || quest.correct === words )
   const index = replacementQArray.indexOf(answeredQuestion)
@@ -71,9 +70,10 @@ class App extends React.Component {
 
   showScore = () => this.setState({ showScore: true })
 
-  removeQuestion = (index) => {
-    const questionToRemove = this.state.arrayQ[index]
-    this.setState({ questions: this.state.questions.filter(question => question !== questionToRemove), arrayQ: this.state.arrayQ.filter(question => question !== questionToRemove), num: parseInt(this.state.num)-1 })
+  removeQuestion = (question) => {
+    this.setState({ questions: this.state.questions.filter(quest => quest.question != question), arrayQ: this.state.arrayQ.filter(quest => quest.question != question), num: parseInt(this.state.num)-1 })
+    // const questionToRemove = this.state.arrayQ[index]
+    // this.setState({ questions: this.state.questions.filter(question => question !== questionToRemove), arrayQ: this.state.arrayQ.filter(question => question !== questionToRemove), num: parseInt(this.state.num)-1 })
   }
 
  render (){
