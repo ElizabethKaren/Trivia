@@ -13,13 +13,12 @@ const Question = props => {
     
     if (!props.incorrect) return <div>Loading...</div>
        const possibleAnswers = [...props.incorrect, props.correct]
-       const answerGiven = props.answerGiven
        possibleAnswers.sort()
     if (props.answered && props.answerGiven === props.correct) return (
         <div>
             <p id='back' onClick={()=>props.removeQuestion(props.index)}>X</p>
             <p id='question'>{props.question}</p>
-            {possibleAnswers.map((answer, index) => answer === props.answerGiven ? <div><button id='lime' onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> : <div><button onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}
+            {possibleAnswers.map((answer, index) => answer === props.correct ? <div><button id='green' onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> : <div><button onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}
         </div>
     )
     if (props.answered && props.answerGiven != props.correct) return (
