@@ -33,6 +33,8 @@ class App extends React.Component {
     return array
 }
 
+ playAgain = () => this.setState({ showScore: false, score: 0, startingNum: 0, num: 0, arrayQ: [], questions: this.shuffleArray(Questions) })
+
  answer = (words) => {
   const replacementQArray = this.state.arrayQ.slice()
   const answeredQuestion = replacementQArray.find(quest => quest.incorrect.includes(words) || quest.correct === words )
@@ -90,6 +92,7 @@ class App extends React.Component {
     <div className='App'>
       <h2>Great Job {this.state.userName}!</h2>
       {this.gameOver(this.state.score)}
+      <button onClick={this.playAgain}>Play Again</button>
     </div>
   )
   return (
