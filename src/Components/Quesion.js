@@ -10,7 +10,7 @@ const Question = props => {
         props.answer(e.target.name)
     }
 
-    const alreadyAnswered = () => alert('QUESTION ALREADY ANSWERED')
+    const alreadyAnswered = () => alert('Cannot Change Answer')
     
     if (!props.incorrect) return <div>Loading...</div>
        const possibleAnswers = [...props.incorrect, props.correct]
