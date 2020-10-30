@@ -1,4 +1,5 @@
 import React from 'react'
+import Answer from './Answer'
 
 const Question = props => {
 
@@ -14,26 +15,11 @@ const Question = props => {
     if (!props.incorrect) return <div>Loading...</div>
        const possibleAnswers = [...props.incorrect, props.correct]
        possibleAnswers.sort()
-    if (props.answered && props.answerGiven === props.correct) return (
-        <div>
-            <p><strong>Question {props.size - props.index}</strong></p>
-            <p id='question'>{props.question}</p>
-            {possibleAnswers.map((answer, index) => answer === props.correct ? <div><button id='green' onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> : <div><button onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}
-        </div>
-    )
-    if (props.answered && props.answerGiven !== props.correct) return (
-        <div>
-            <p><strong>Question {props.size - props.index}</strong></p>
-            <p id='question'>{props.question}</p>
-            {possibleAnswers.map((answer, index) => answer === props.correct ? <div><button id='yellow' onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> : <div><button onClick={alreadyAnswered} name={answer} key={index}>{answer}</button><br></br></div> )}
-        </div>
-    )
-
     return (
-        <div>
+        <div className='content'>
             <p><strong>Question {props.size - props.index}</strong></p>
             <p id='question'>{props.question}</p>
-            {possibleAnswers.map((answer, index) => <div><button onClick={correctAnswer} name={answer} key={index}>{answer}</button><br></br></div> )}
+            {possibleAnswers.map((answer, index) => <Answer alreadyAnswered={alreadyAnswered} correct={props.correct} answerGiven={props.answerGiven} answered={props.answered} correctAnswer={correctAnswer} key={index} answer={answer}/> )}
         </div>
     )
 

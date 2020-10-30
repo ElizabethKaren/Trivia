@@ -4,6 +4,7 @@ button{
     height: 40px;
     width: 200px;
     font-weight: bold;
+    background-color: whitesmoke;
 }
 :root{
     background-color: dodgerblue;
@@ -17,6 +18,8 @@ input{
     height: 28px;
     width: 200px;
     font-weight: bold;
+    background-color: whitesmoke;
+    text-align: center;
 }
 #back{
     background-color: floralwhite;
@@ -32,13 +35,24 @@ background-color: red;
 background-color: lime;
 }
 .App{
-    background-color: dodgerblue;
-    align-content: center;
-    padding-left: 35vw;
-    padding-right: 35vw;
-    padding-top: 80wh;
-    size: small;
     font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+    text-align: center;
+    text-decoration: none; 
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.content{
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column; 
+  text-align: center;
+  text-decoration: none; 
+  margin-left: 20px;
+  margin-right: 20px;
 }
 #question{
     size: 100px;
@@ -48,11 +62,28 @@ background-color: lime;
     background-color: #f1f1f1;
     font-size: 30px;
 }
+#newQ{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+    align-content: center;
+}
 .contianer{
     align-content: center;
     background-color: dodgerblue;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+    text-align: center;
+    text-decoration: none; 
+    margin-left: 20px;
+    margin-right: 20px;
 }
 img{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
     align-content: center;
-    padding-left: 4vw;
 }

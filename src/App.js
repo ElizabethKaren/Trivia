@@ -65,11 +65,11 @@ class App extends React.Component {
 
   gameOver = (num) => {
     if (num === 50){
-      return <div><h2>BOOM! YOU GOT EVERY QUESTION CORRECT!</h2></div>
+      return <div><h2>Boom! You got every question correct!</h2></div>
     } else if (num > 20){
-      return <div><h2>AWESOME! YOU WON {num} POINTS THIS GAME</h2></div>
+      return <div><h2>Awesome! You won {num} points this game!</h2></div>
     } else {
-      return <div><h2>YOUR SCORE IS {num}!</h2></div>
+      return <div><h2>Your score is {num}!</h2></div>
     }
   }
 
@@ -103,7 +103,7 @@ class App extends React.Component {
       <img src={Nerd} alt='nerd' width="150" height="150"/>
       <h3>Great Job {this.state.userName}!</h3>
       {this.gameOver(this.state.score)}
-      {this.state.num === 21 ? null : <button onClick={this.playAgain}>Play Again</button>}
+      <p id='newQ'>{this.state.num === 21 ? null : <button onClick={this.playAgain}>Play Again</button>}</p>
     </div>
   )
   return (
@@ -112,7 +112,7 @@ class App extends React.Component {
       <img src={Nerd} alt='nerd' width="150" height="150"/>
       <h3>Good Luck {this.state.userName}!</h3>
       <h3>Currect Trivia Score: {this.state.score} </h3>
-      {this.state.num === 10 || this.state.num === 21 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Question</button>}
+      <p id='newQ'>{this.state.num === 10 || this.state.num === 21 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Question</button>}</p>
       <br></br>
       {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions answer={this.answer} removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
       <br></br>
