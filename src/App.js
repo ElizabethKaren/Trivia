@@ -34,7 +34,7 @@ class App extends React.Component {
     return array
 }
 
- playAgain = () => this.setState({ showScore: false, score: 0, startingNum: 11, num: 11 })
+ playAgain = () => this.setState({ showScore: false, startingNum: 11, num: 11 })
 
  answer = (words) => {
   const replacementQArray = this.state.arrayQ.slice()
@@ -64,9 +64,9 @@ class App extends React.Component {
   newQuestion = () => this.setState({ num: this.state.num + 1, arrayQ: this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num)+1) })
 
   gameOver = (num) => {
-    if (num === 50){
+    if (num === 100){
       return <div><h2>Boom! You got every question correct!</h2></div>
-    } else if (num > 20){
+    } else if (num > 50){
       return <div><h2>Awesome! You won {num} points this game!</h2></div>
     } else {
       return <div><h2>Your score is {num}!</h2></div>
@@ -105,7 +105,7 @@ class App extends React.Component {
       <img src={Nerd} alt='nerd' width="150" height="150"/>
       <h3>Great Job {this.state.userName}!</h3>
       {this.gameOver(this.state.score)}
-      <p id='newQ'>{this.state.num === 21 ? null : <button onClick={this.playAgain}>Play Again</button>}</p>
+      <p id='newQ'>{this.state.num === 21 ? null : <button onClick={this.playAgain}>One More Round</button>}</p>
     </div>
   )
   return (

@@ -8,7 +8,9 @@ const UserName = props => {
             <input onChange={props.handleOnChange} placeholder='Player...'></input>
             <br></br><br></br>
             <button onClick={props.updateUser}>Start</button>
-            <h3>Ten Quesitons A Game! Win up to 50 points!</h3>
+            <p><strong>Nerd Trivia: Ten Question Power Round!</strong></p> 
+            <p><strong>Win up to 50 points!</strong></p>
+            <p><strong>Two Rounds Per Player</strong></p>
         </div>
     )
 }
