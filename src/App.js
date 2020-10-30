@@ -113,7 +113,7 @@ class App extends React.Component {
       <br></br>
       <img src={Nerd} alt='nerd' width="150" height="150"/>
       <h3>Good Luck {this.state.userName}!</h3>
-      <h3>Currect Trivia Score: {this.state.score} </h3>
+      <h3>Currect Score: {this.state.score} </h3>
       <p id='newQ'>{this.state.num === 10 || this.state.num === 21 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Question</button>}</p>
       <br></br>
       {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions answer={this.answer} removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
