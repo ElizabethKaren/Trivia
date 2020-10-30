@@ -9,7 +9,6 @@ const UserName = props => {
             <br></br><br></br>
             <button onClick={props.updateUser}>Start</button>
             <p><strong>Nerd Trivia: Ten Question Power Round!</strong></p> 
-            <p><strong>Win up to 50 points!</strong></p>
             <p><strong>Two Rounds Per Player</strong></p>
         </div>
     )
