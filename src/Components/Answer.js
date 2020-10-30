@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Answer = props => {
-    console.log(props)
     if (!props.answered) return (
         <div>
             <button onClick={props.correctAnswer} name={props.answer}>{props.answer}</button>

@@ -83,6 +83,8 @@ class App extends React.Component {
     }
   }
 
+  bonusQ = () => console.log(this.state.questions[this.state.questions.length-1])
+
   showScore = () => this.setState({ showScore: true })
 
   removeQuestion = (question) => this.setState({ questions: this.state.questions.filter(quest => quest.question !== question), arrayQ: this.state.arrayQ.filter(quest => quest.question !== question), num: parseInt(this.state.num)-1 })
