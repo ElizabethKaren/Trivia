@@ -80,8 +80,6 @@ class App extends React.Component {
     }
   }
 
-  bonusQ = () => console.log(this.state.questions[this.state.questions.length-1])
-
   showScore = () => this.setState({ showScore: true })
 
  render (){
