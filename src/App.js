@@ -17,9 +17,6 @@ class App extends React.Component {
     input: ''
   }
 
-  newGame = () => this.setState({ score: 0, startingNum: parseInt(this.state.startingNum) + 10, num: 0 })
-
-
   shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -86,8 +83,6 @@ class App extends React.Component {
   bonusQ = () => console.log(this.state.questions[this.state.questions.length-1])
 
   showScore = () => this.setState({ showScore: true })
-
-  removeQuestion = (question) => this.setState({ questions: this.state.questions.filter(quest => quest.question !== question), arrayQ: this.state.arrayQ.filter(quest => quest.question !== question), num: parseInt(this.state.num)-1 })
 
  render (){
   const arrayQ = this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num)).reverse()
