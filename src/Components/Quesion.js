@@ -11,9 +11,7 @@ const Question = props => {
     }
 
     const alreadyAnswered = () => alert('Cannot Change Answer')
-    
-    console.log(props)
-    
+
     if (!props.incorrect) return <div><strong>Loading...</strong></div>
        const possibleAnswers = [...props.incorrect, props.correct]
        possibleAnswers.sort()

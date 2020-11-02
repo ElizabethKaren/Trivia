@@ -88,7 +88,6 @@ class App extends React.Component {
 
  render (){
   const arrayQ = this.state.arrayQ[parseInt(this.state.num)-1]
-  console.log(this.state.questions)
   if (this.state.userName === '')return (
     <div className='App'>
       <br></br>
