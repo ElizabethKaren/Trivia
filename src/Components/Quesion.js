@@ -20,6 +20,7 @@ const Question = props => {
     
     return (
         <div className='content'>
+            <img src={props.image} alt='pic' width="400" height="250"/>
             <span id='oneline'><p onClick={props.goBack}><strong>⬻</strong></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p onClick={props.nextQuestion}><strong>⤖</strong></p></span>
             <p id='question'>{props.question}</p>
             {possibleAnswers.map((answer, index) => <Answer alreadyAnswered={alreadyAnswered} correct={props.correct} answerGiven={props.answerGiven} answered={props.answered} correctAnswer={correctAnswer} key={index} answer={answer}/> )}

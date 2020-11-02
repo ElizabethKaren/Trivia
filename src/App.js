@@ -15,6 +15,7 @@ class App extends React.Component {
     arrayQ: [],
     userName: '',
     input: '',
+    images: ['https://cdn.cnn.com/cnnnext/dam/assets/200815163257-clueless-movie-file-restricted-super-tease.jpg', 'https://images.thestar.com/aEYEyMY0S72QwKC0zklHPv1N26I=/1200x794/smart/filters:cb(1588016999082)/https://www.thestar.com/content/dam/thestar/entertainment/movies/opinion/2020/04/27/clueless-is-25-as-if-why-this-sparkling-rom-com-is-a-ray-of-sunshine-in-these-troubled-times/clueless.jpg', 'https://m.media-amazon.com/images/M/MV5BNjUxMDM5MTAtZTMzMy00NGRiLWE1ZmUtZjMwMzA1MGM4Y2RmXkEyXkFqcGdeQVRoaXJkUGFydHlJbmdlc3Rpb25Xb3JrZmxvdw@@._V1_UX477_CR0,0,477,268_AL_.jpg','https://media.vanityfair.com/photos/5da8d531466db3000999523d/16:9/w_2624,h_1476,c_limit/MSDCLUE_EC035.jpg', "https://i.guim.co.uk/img/media/42fe49fa2389bb71f2a7c024bea0473831b17683/0_137_3006_1803/master/3006.jpg?width=700&quality=85&auto=format&fit=max&s=c770839bc9c6ba99cde59dac0b97cddd", 'https://imgix.bustle.com/rehost/2016/9/13/532717b6-2e35-42ab-ac19-441d03318f15.jpg']
   }
 
   shuffleArray = array => {
@@ -24,8 +25,9 @@ class App extends React.Component {
         array[i] = array[j];
         array[j] = temp;
     }
-    for (let i = 0; i > array.length-1; i++){
-      let temp = {...array[i], answered: false, answerGiven: ''}
+    for (let i = 0; i < array.length-1; i++){
+      let pic = this.state.images[Math.floor(Math.random() * this.state.images.length)]
+      let temp = {...array[i], answered: false, answerGiven: '', image: pic }
       array[i] = temp 
     }
     return array
@@ -62,7 +64,7 @@ class App extends React.Component {
 
   gameOver = (num) => {
     if (num === 100){
-      return <div><h2>Boom! You got every question correct!</h2></div>
+      return <div><h2>Boom! You got every question correct!</h2><img src='https://i.gifer.com/Ag6K.gif' alt='bow' /></div>
     } else if (num > 50){
       return <div><h2>Awesome! You won {num} points this game!</h2></div>
     } else {
@@ -86,7 +88,7 @@ class App extends React.Component {
 
  render (){
   const arrayQ = this.state.arrayQ[parseInt(this.state.num)-1]
-  console.log(this.state.arrayQ)
+  console.log(this.state.questions)
   if (this.state.userName === '')return (
     <div className='App'>
       <br></br>
@@ -95,7 +97,7 @@ class App extends React.Component {
     </div>
   )
   
-  if (this.state.arrayQl.length === this.state.questions.length) return (
+  if (this.state.arrayQ.length === this.state.questions.length) return (
     <div className='App'>
       <br></br>
       <img src="https://media2.giphy.com/media/26xBPncFx3h3MQd8s/giphy.gif" alt='nerd'/>
@@ -107,11 +109,10 @@ class App extends React.Component {
   return (
     <div className='App'>
       <br></br>
-      <img src="https://img.cinemablend.com/quill/5/0/8/9/b/e/5089beb274389c4c438408ed7bdcc5d62e40d8fb.jpg" alt='nerd' width="400" height="250"/>
+      {this.state.num < 1 ? <img src="https://img.cinemablend.com/quill/5/0/8/9/b/e/5089beb274389c4c438408ed7bdcc5d62e40d8fb.jpg" alt='nerd' width="400" height="250"/> : null}
       <h3>Good Luck {this.state.userName}!</h3>
       <h3>Currect Score: {this.state.score} </h3>
       <p id='newQ'>{this.state.num === 0 ? <button onClick={this.newQuestion}>Start Game</button> : null }</p>
-      <br></br>
       {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions nextQuestion={this.newQuestion} goBack={this.goBack} questionNum={this.state.num} answer={this.answer} removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
       <br></br>
     </div>
