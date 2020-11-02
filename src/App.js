@@ -85,7 +85,7 @@ class App extends React.Component {
   goBack = () => this.setState({ num: parseInt(this.state.num) - 1 })
 
  render (){
-  const arrayQ = this.state.arrayQ.slice(parseInt(this.state.startingNum), parseInt(this.state.num)).reverse()
+  const arrayQ = this.state.arrayQ[parseInt(this.state.num)]
   if (this.state.userName === '')return (
     <div className='App'>
       <br></br>
