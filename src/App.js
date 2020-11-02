@@ -87,7 +87,7 @@ class App extends React.Component {
   if (this.state.userName === '')return (
     <div className='App'>
       <br></br>
-      <img src={Nerd} alt='nerd' width="150" height="150"/>
+      <img src="https://i.pinimg.com/originals/70/34/b5/7034b5150bba8e822468e95763b930b5.gif" alt='nerd'/>
       <UserName updateUser={this.updateUser} handleOnChange={this.handleOnChange}/> 
     </div>
   )
@@ -95,7 +95,7 @@ class App extends React.Component {
   if (this.state.showScore) return (
     <div className='App'>
       <br></br>
-      <img src={Nerd} alt='nerd' width="150" height="150"/>
+      <img src="https://media2.giphy.com/media/26xBPncFx3h3MQd8s/giphy.gif" alt='nerd'/>
       <h3>Great Job {this.state.userName}!</h3>
       {this.gameOver(this.state.score)}
       <p id='newQ'>{this.state.num === 21 ? null : <button onClick={this.playAgain}>One More Round</button>}</p>
@@ -104,7 +104,7 @@ class App extends React.Component {
   return (
     <div className='App'>
       <br></br>
-      <img src={Nerd} alt='nerd' width="150" height="150"/>
+      <img src="https://img.cinemablend.com/quill/5/0/8/9/b/e/5089beb274389c4c438408ed7bdcc5d62e40d8fb.jpg" alt='nerd' width="400" height="250"/>
       <h3>Good Luck {this.state.userName}!</h3>
       <h3>Currect Score: {this.state.score} </h3>
       <p id='newQ'>{this.state.num === 10 || this.state.num === 21 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Question</button>}</p>
