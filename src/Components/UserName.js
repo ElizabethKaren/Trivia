@@ -8,8 +8,6 @@ const UserName = props => {
             <input onChange={props.handleOnChange} placeholder='Player...'></input>
             <br></br><br></br>
             <button onClick={props.updateUser}>Start</button>
-            <p><strong>Nerd Trivia: Ten Question Power Round!</strong></p> 
-            <p><strong>Two Rounds Per Player</strong></p>
         </div>
     )
 }
