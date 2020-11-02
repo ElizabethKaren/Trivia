@@ -12,7 +12,7 @@ const Question = props => {
 
     const alreadyAnswered = () => alert('Cannot Change Answer')
 
-    if (!props.incorrect) return <div><strong>Loading...</strong></div>
+    if (!props.incorrect) return <div className='content'><p id='oneline' onClick={props.nextQuestion}><strong>⤖</strong></p><br></br><strong>No Question</strong></div>
        const possibleAnswers = [...props.incorrect, props.correct]
        possibleAnswers.sort()
     
