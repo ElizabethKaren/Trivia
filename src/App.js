@@ -14,7 +14,7 @@ class App extends React.Component {
     showScore: false,
     arrayQ: [],
     userName: '',
-    input: ''
+    input: '',
   }
 
   shuffleArray = array => {
@@ -82,8 +82,10 @@ class App extends React.Component {
 
   showScore = () => this.setState({ showScore: true })
 
+  goBack = () => this.setState({ num: parseInt(this.state.num) - 1 })
+
  render (){
-  const arrayQ = this.state.questions.slice(parseInt(this.state.startingNum), parseInt(this.state.num)).reverse()
+  const arrayQ = this.state.arrayQ.slice(parseInt(this.state.startingNum), parseInt(this.state.num)).reverse()
   if (this.state.userName === '')return (
     <div className='App'>
       <br></br>
@@ -107,9 +109,9 @@ class App extends React.Component {
       <img src="https://img.cinemablend.com/quill/5/0/8/9/b/e/5089beb274389c4c438408ed7bdcc5d62e40d8fb.jpg" alt='nerd' width="400" height="250"/>
       <h3>Good Luck {this.state.userName}!</h3>
       <h3>Currect Score: {this.state.score} </h3>
-      <p id='newQ'>{this.state.num === 10 || this.state.num === 21 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>New Question</button>}</p>
+      <p id='newQ'>{!this.state.num === 0 || this.state.num === 21 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>Start Game</button>}</p>
       <br></br>
-      {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions answer={this.answer} removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
+      {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions nextQuestion={this.newQuestion} goBack={this.goBack} questionNum={this.state.num} answer={this.answer} removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
       <br></br>
     </div>
     )
