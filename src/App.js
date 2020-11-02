@@ -83,7 +83,13 @@ class App extends React.Component {
 
   showScore = () => this.setState({ showScore: true })
 
-  goBack = () => this.setState({ num: parseInt(this.state.num) - 1 })
+  goBack = () => {
+    if (parseInt(this.state.num) - 1 === 0){
+      alert('CANNOT GO BACK')
+    } else {
+      this.setState({ num: parseInt(this.state.num) - 1 })
+    }
+  }
 
  render (){
   const arrayQ = this.state.arrayQ[parseInt(this.state.num)-1]
