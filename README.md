@@ -6,6 +6,4 @@
 <p>Click button for more questions</p>
 <p>Look Back on all questions</p>
 <a href="https://tenquestiontrivia.netlify.app/" target="_black"><img src='./src/Images/inncorrect.png' alt='incorrect' /></a>
-<p>Try Another Round<p>
-<a href="https://tenquestiontrivia.netlify.app/" target="_black"><img src='./src/Images/playAgain.png' alt='playAgain' /></a>
 
