@@ -85,7 +85,8 @@ class App extends React.Component {
   goBack = () => this.setState({ num: parseInt(this.state.num) - 1 })
 
  render (){
-  const arrayQ = this.state.arrayQ[parseInt(this.state.num)]
+  const arrayQ = this.state.arrayQ[parseInt(this.state.num)-1]
+  console.log(this.state.arrayQ)
   if (this.state.userName === '')return (
     <div className='App'>
       <br></br>
@@ -94,7 +95,7 @@ class App extends React.Component {
     </div>
   )
   
-  if (this.state.showScore) return (
+  if (this.state.arrayQl.length === this.state.questions.length) return (
     <div className='App'>
       <br></br>
       <img src="https://media2.giphy.com/media/26xBPncFx3h3MQd8s/giphy.gif" alt='nerd'/>
@@ -109,7 +110,7 @@ class App extends React.Component {
       <img src="https://img.cinemablend.com/quill/5/0/8/9/b/e/5089beb274389c4c438408ed7bdcc5d62e40d8fb.jpg" alt='nerd' width="400" height="250"/>
       <h3>Good Luck {this.state.userName}!</h3>
       <h3>Currect Score: {this.state.score} </h3>
-      <p id='newQ'>{!this.state.num === 0 || this.state.num === 21 ? <button onClick={this.showScore}>How'd I do?</button> : <button onClick={this.newQuestion}>Start Game</button>}</p>
+      <p id='newQ'>{this.state.num === 0 ? <button onClick={this.newQuestion}>Start Game</button> : null }</p>
       <br></br>
       {this.state.arrayQ.length === 0 ? null : <AllAskedQuestions nextQuestion={this.newQuestion} goBack={this.goBack} questionNum={this.state.num} answer={this.answer} removeQuestion={this.removeQuestion} addToScore={this.addToScore} arrayQ={arrayQ}/>}
       <br></br>

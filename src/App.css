@@ -29,6 +29,12 @@ input{
     height: 15px;
     text-align: center;
 }
+#oneline{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-size: x-large;
+}
 #red{
 background-color: rgb(248, 113, 181);
 }
