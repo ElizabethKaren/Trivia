@@ -2,7 +2,6 @@ import React from 'react';
 import Questions from './Data/Apprentice_TandemFor400_Data'
 import AllAskedQuestions from './Components/AllAskedQuestions'
 import UserName from './Components/UserName'
-import Nerd from './Images/nerd.png'
 import './App.css'
 
 class App extends React.Component {
